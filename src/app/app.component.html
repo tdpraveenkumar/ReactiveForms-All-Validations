@@ -1,0 +1,143 @@
+<form [formGroup]="myform">
+<table>
+  <tr>
+    <td>
+  
+    <label>Name</label>
+    <label> : </label>
+    <input type="text" formControlName="name">
+      <small class="errormessage" *ngIf="submitted && Form.name.hasError('required')">
+        Name is Required
+      </small>
+
+        <small class="errormessage" *ngIf="submitted && Form.name.hasError('pattern')">
+       Allow only Alphabets
+      </small>
+ 
+    </td>
+  </tr>
+  <br>
+<tr>
+  <td>
+  
+    <label>Email</label>
+    <label> : </label>
+    <input type="text" formControlName="email">
+      <small class="errormessage"  *ngIf="submitted && Form.email.hasError('required')">
+        Email is Required
+      </small>
+
+        <small class="errormessage" *ngIf="submitted && Form.email.hasError('pattern')">
+      Please enter valid email address
+      </small>
+ 
+  </td>
+</tr>
+
+  <br>
+<tr>
+  <td>
+ 
+    <label>Password</label>
+    <label> : </label>
+    <input type="text" formControlName="password">
+      <small class="errormessage" *ngIf="submitted && Form.password.hasError('required')">
+        Password is Required
+      </small>
+
+       
+  
+  </td>
+</tr>
+  <br>
+<tr>
+  <td>
+ 
+    <label>ConfirmPassword</label>
+    <label> : </label>
+    <input type="text" formControlName="confirmpassword">
+      <small class="errormessage" *ngIf="submitted && Form.confirmpassword.hasError('required')">
+        Confirm Password is Required
+      </small>
+
+        <small class="errormessage" *ngIf="submitted && Form.confirmpassword.hasError('mustMatch')">
+      Password and Confirm password did n't match
+      </small>
+ 
+  </td>
+</tr>
+  <br>
+<tr>
+  <td>
+  
+    <label>Phone</label>
+    <label> : </label>
+    <input type="text" formControlName="phone" (keypress)="numberOnly($event)" maxlength="10">
+      <small class="errormessage" *ngIf="submitted && Form.phone.hasError('required')">
+        phone is Required
+      </small>
+
+        <small class="errormessage" *ngIf="submitted && Form.phone.hasError('pattern')">
+      It is not a valid mobile number
+      </small>
+  
+  </td>
+</tr>
+  <br>
+
+<tr>
+  <td>
+   
+    <label>Gender</label>
+    <label> : </label>
+    <input type="radio" id="male" formControlName="gender" value="male" name="gender">Male
+    <input type="radio" id="female" formControlName="gender" value ="female" name="gender">Female
+    
+    <small class="errormessage" *ngIf="submitted && Form.gender.errors?.required">
+       Please select either value
+   </small>
+        
+ 
+  </td>
+</tr>
+  <br>
+     
+     
+   
+<tr>
+  <td>
+    <label>Choose Your City</label>
+    <label>: </label>
+     <select class="custom-select"  formControlName="cityName">
+              <option value="">--Select City--</option>
+              <option value="1">USA</option>
+              <option value="2">INDIA</option>
+              <option value="3">CANADA</option>
+             
+            </select>
+
+    
+    <small class="errormessage" *ngIf="submitted && Form.cityName.errors?.required">
+             Please Select your city name
+            </small>
+  </td>
+  <tr>    
+ 
+  <br>
+<tr>
+  <td>
+
+  <input type="checkbox" formControlName="terms"> Accept Terms And Conditions
+  <small class="errormessage" *ngIf="submitted && Form.terms.errors?.required">
+    Accept TS & Cs is required
+  </small>
+  </td>
+  </tr>
+    <br> 
+  <tr>
+    <td>
+    <button type="submit" (click)="submit()">Submit</button>
+    </td>
+  </tr>
+  </table>
+</form>
